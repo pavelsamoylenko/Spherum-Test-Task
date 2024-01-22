@@ -24,6 +24,7 @@ namespace _Project.Scripts
             if (cube2Model == null) return;
 
             var direction = (cube2Model.Position.Value - cube.Model.Position.Value).normalized;
+            
             var shape = particles.shape;
             shape.rotation = Quaternion.LookRotation(direction).eulerAngles;
         }

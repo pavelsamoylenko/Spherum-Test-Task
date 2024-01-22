@@ -12,14 +12,20 @@ namespace _Project.Scripts
         public void SetModel(CubeModel cubeModel)
         {
             model = cubeModel;
+            
             model.Position
                 .Subscribe(UpdatePosition)
                 .AddTo(this);
 
             model
                 .Color
-                .Subscribe(newColor => _renderer.material.color = newColor)
+                .Subscribe(ChangeColor)
                 .AddTo(this);
+        }
+
+        private void ChangeColor(Color newColor)
+        {
+            _renderer.material.color = newColor;
         }
 
         private void UpdatePosition(Vector3 newPosition)
