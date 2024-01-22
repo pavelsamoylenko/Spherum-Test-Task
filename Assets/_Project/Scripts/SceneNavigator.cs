@@ -6,6 +6,7 @@ namespace _Project.Scripts
     public class SceneNavigator : MonoBehaviour
     {
         [SerializeField] private DistanceController distanceController;
+        
         private void OnEnable()
         {
             distanceController.OnDistanceConditionMet += MoveToScene2;

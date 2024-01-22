@@ -9,7 +9,7 @@ namespace _Project.Scripts
         [SerializeField] private VisualEffect[] visualEffects;
         [SerializeField] private Button button;
 
-        private int currentGameObjectIndex = 0;
+        private int _currentGameObjectIndex = 0;
 
         private void OnEnable()
         {
@@ -23,16 +23,16 @@ namespace _Project.Scripts
                 return;
             }
 
-            var current = visualEffects[currentGameObjectIndex];
+            var current = visualEffects[_currentGameObjectIndex];
 
             current.gameObject.SetActive(false);
             current.Stop();
             current.Reinit(); // This is a workaround for a feature in the VisualEffect component that causes the particles count (visualEffect.aliveParticleCount) to be incorrect after a Stop() call or disabling the game object.
 
-            currentGameObjectIndex++;
-            currentGameObjectIndex %= visualEffects.Length;
+            _currentGameObjectIndex++;
+            _currentGameObjectIndex %= visualEffects.Length;
 
-            var next = visualEffects[currentGameObjectIndex];
+            var next = visualEffects[_currentGameObjectIndex];
             next.gameObject.SetActive(true);
             next.Play();
         }

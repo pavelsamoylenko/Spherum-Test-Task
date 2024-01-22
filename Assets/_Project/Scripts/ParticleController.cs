@@ -7,7 +7,7 @@ namespace _Project.Scripts
         [SerializeField] private ParticleSystem particles;
         [SerializeField] private CubeController cube;
         
-        private CubeModel cube2Model;
+        private CubeModel _cube2Model;
 
         private void Update()
         {
@@ -16,14 +16,14 @@ namespace _Project.Scripts
 
         public void Initialize(CubeModel cube2)
         {
-            cube2Model = cube2;
+            _cube2Model = cube2;
         }
 
         private void UpdateParticleDirection()
         {
-            if (cube2Model == null) return;
+            if (_cube2Model == null) return;
 
-            var direction = (cube2Model.Position.Value - cube.Model.Position.Value).normalized;
+            var direction = (_cube2Model.Position.Value - cube.Model.Position.Value).normalized;
             
             var shape = particles.shape;
             shape.rotation = Quaternion.LookRotation(direction).eulerAngles;

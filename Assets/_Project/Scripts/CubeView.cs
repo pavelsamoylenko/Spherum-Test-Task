@@ -7,17 +7,17 @@ namespace _Project.Scripts
     {
         [SerializeField] private Renderer _renderer;
     
-        private CubeModel model;
+        private CubeModel _model;
 
         public void SetModel(CubeModel cubeModel)
         {
-            model = cubeModel;
+            _model = cubeModel;
             
-            model.Position
+            _model.Position
                 .Subscribe(UpdatePosition)
                 .AddTo(this);
 
-            model
+            _model
                 .Color
                 .Subscribe(ChangeColor)
                 .AddTo(this);
